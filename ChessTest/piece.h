@@ -7,6 +7,6 @@ struct Piece {
 	Square square;
 	PieceType pieceType;
 
-	Piece(const int p, const PieceType t);
+	Piece(const Square p, const PieceType t);
 	std::string toString();
 };

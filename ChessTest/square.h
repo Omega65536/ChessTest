@@ -3,8 +3,16 @@
 #include <algorithm>
 #include <iostream>
 
-typedef unsigned int Square;
-typedef unsigned int Direction;
+#define getX(square) (square & 7)
+#define getY(square) (square >> 3)
+
+#define notFileA(square) (square & 7)
+#define notFileH(square) ((square & 7) != 7)
+#define notRank1(square) (square >> 3)
+#define notRank8(square) ((square >> 3) != 7)
+
+typedef uint8_t Square;
+typedef uint8_t Direction;
 
 const enum Squares {
 	A1, B1, C1, D1, E1, F1, G1, H1,
@@ -17,59 +25,55 @@ const enum Squares {
 	A8, B8, C8, D8, E8, F8, G8, H8
 };
 
-const std::string fileStrings[]{
-	"A", "B", "C", "D", "E", "F", "G", "H"
-};
 
-const std::string rankStrings[]{
-	"1", "2", "3", "4", "5", "6", "7", "8"
-};
+const Direction NorthWest = 7;
+const Direction North = 8;
+const Direction NorthEast = 9;
+const Direction East = 1;
+const Direction SouthEast = -7;
+const Direction South = -8;
+const Direction SouthWest = -9;
+const Direction West = -1;
+const Direction KnightNorthWest = 15;
 
-const Direction NORTHWEST = 7;
-const Direction NORTH = 8;
-const Direction NORTHEAST = 9;
-const Direction EAST = 1;
-const Direction SOUTHEAST = -7;
-const Direction SOUTH = -8;
-const Direction SOUTHWEST = -9;
-const Direction WEST = -1;
+namespace square {
+	const std::string fileStrings[]{
+		"A", "B", "C", "D", "E", "F", "G", "H"
+	};
 
-inline bool isOnEdge(const Square square) {
-	return ((square & 7) == 0) || ((square & 7) == 7) ||
-		   ((square >> 3) == 0) || ((square >> 3) == 7);
-}
+	const std::string rankStrings[]{
+		"1", "2", "3", "4", "5", "6", "7", "8"
+	};
 
-inline Square getX(const Square square) {
-	return square & 7;
-}
-
-inline Square getY(const Square square) {
-	return square >> 3;
-}
-
-inline Square getDistToEdge(const Square square, const Direction direction) {
-	switch (direction) {
-	case NORTHWEST:
-		return std::min(getX(square), 7 - getY(square));
-	case NORTH:
-		return 7 - getY(square);
-	case NORTHEAST:
-		return std::min(7 - getX(square), 7 - getY(square));
-	case EAST:
-		return 7 - getX(square);
-	case SOUTHEAST:
-		return std::min(7 - getX(square), getY(square));
-	case SOUTH:
-		return getY(square);
-	case SOUTHWEST:
-		return std::min(getX(square), getY(square));
-	case WEST:
-		return getX(square);
-	default:
-		return 0;
+	inline bool isOnEdge(const Square square) {
+		return ((square & 7) == 0) || ((square & 7) == 7) ||
+			((square >> 3) == 0) || ((square >> 3) == 7);
 	}
-}
 
-inline std::string SquareToString(const Square square) {
-	return fileStrings[getX(square)] + rankStrings[getY(square)];
+	inline Square getDistToEdge(const Square square, const Direction direction) {
+		switch (direction) {
+		case NorthWest:
+			return std::min(getX(square), 7 - getY(square));
+		case North:
+			return 7 - getY(square);
+		case NorthEast:
+			return std::min(7 - getX(square), 7 - getY(square));
+		case East:
+			return 7 - getX(square);
+		case SouthEast:
+			return std::min(7 - getX(square), getY(square));
+		case South:
+			return getY(square);
+		case SouthWest:
+			return std::min(getX(square), getY(square));
+		case West:
+			return getX(square);
+		default:
+			return 0;
+		}
+	}
+
+	inline std::string toString(const Square square) {
+		return fileStrings[getX(square)] + rankStrings[getY(square)];
+	}
 }
