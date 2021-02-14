@@ -1,44 +1,24 @@
 #include <vector>
 #include "move.h"
 #include "board.h"
-#include "direction.h"
 
 void Board::setup() {
-	whitePieces.push_back(Piece(A1, Rook));
+	addWhitePiece(Piece(A1, Rook));
+	addWhitePiece(Piece(B1, Knight));
+	addWhitePiece(Piece(C1, Bishop));
+	addWhitePiece(Piece(D1, Queen));
+	addWhitePiece(Piece(E1, King));
+	addWhitePiece(Piece(F1, Bishop));
+	addWhitePiece(Piece(G1, Knight));
+	addWhitePiece(Piece(H1, Rook));
 }
 
-std::vector<Move> Board::generateMoves() {
-	std::vector<Piece> myPieces = whiteToMove ? whitePieces : blackPieces;
-	std::vector<Piece> enemyPieces = whiteToMove ? blackPieces : whitePieces;
-	int numMyPieces = myPieces.size();
-
-	std::vector<Move> moves;
-	for (int i = 0; i < numMyPieces; i++) {
-		Piece piece = myPieces.at(i);
-		switch (piece.pieceType) {
-		case Pawn:
-			break;
-		case Knight:
-			break;
-		case Bishop:
-			break;
-		case Rook:
-			slide()
-			break;
-		case Queen:
-			break;
-		case King:
-			break;
-		}
-	}
-
-	return moves;
+void Board::addWhitePiece(Piece piece) {
+	whitePieces.push_back(piece);
+	whitePieceBB |= 1LL << piece.square;
 }
 
-inline Move slide(Square origin, Direction direction, std::vector<Move> &moves) {
-	Square destination = origin;
-	while (!isOnEdge(origin)) {
-		destination += direction;
-	}
-	return Move(origin, destination);
+void Board::addBlackPiece(Piece piece) {
+	blackPieces.push_back(piece);
+	blackPieceBB |= 1LL << piece.square;
 }

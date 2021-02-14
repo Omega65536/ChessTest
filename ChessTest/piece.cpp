@@ -11,5 +11,5 @@ Piece::Piece(const int s, const PieceType t) {
 }
 
 std::string Piece::toString() {
-		return pieceNames[pieceType] + ":" + std::to_string(square);
+		return pieceNames[pieceType] + ":" + SquareToString(square);
 }

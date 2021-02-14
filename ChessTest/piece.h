@@ -4,9 +4,9 @@
 #include "square.h"
 
 struct Piece {
-	Piece(const int p, const PieceType t);
-
 	Square square;
 	PieceType pieceType;
+
+	Piece(const int p, const PieceType t);
 	std::string toString();
 };

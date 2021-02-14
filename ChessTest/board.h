@@ -4,8 +4,10 @@
 #include "move.h"
 #include "piece.h"
 #include "bitboard.h"
+#include "square.h"
 
-struct Board {
+class Board {
+public:
 	std::vector<Piece> whitePieces;
 	std::vector<Piece> blackPieces;
 	bool whiteToMove = true;
@@ -14,5 +16,6 @@ struct Board {
 	Bitboard blackPieceBB = 0;
 
 	void setup();
-	std::vector<Move> generateMoves();
+	void addWhitePiece(Piece piece);
+	void addBlackPiece(Piece piece);
 };
