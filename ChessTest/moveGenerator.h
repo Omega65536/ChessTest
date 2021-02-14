@@ -7,6 +7,6 @@
 #include "moveList.h"
 
 namespace moveGenerator {
-	void slide(MoveList moves, const Square origin, const Direction direction, const Bitboard myPiecesBB, const Bitboard enemyPiecesBB);
-	void generateMoves(const Board& board, MoveList moves);
+	void slide(MoveList& moves, const Square origin, const Direction direction, const Bitboard myPiecesBB, const Bitboard enemyPiecesBB);
+	void generateMoves(const Board& board, MoveList& moves);
 }

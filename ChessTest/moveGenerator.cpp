@@ -5,22 +5,22 @@
 #include "bitboard.h"
 #include "moveList.h"
 
-void moveGenerator::slide(MoveList moves, const Square origin, const Direction direction, const Bitboard myPiecesBB, const Bitboard enemyPiecesBB) {
+void moveGenerator::slide(MoveList& moves, const Square origin, const Direction direction, const Bitboard myPiecesBB, const Bitboard enemyPiecesBB) {
 	Square destination = origin;
-	int maxSteps = getDistToEdge(origin, direction);
+	int maxSteps = square::getDistToEdge(origin, direction);
 
 	for (int steps = 0; steps < maxSteps; steps++) {
 		destination += direction;
 
-		if (isOne(myPiecesBB, destination)) return;
+		if (getBit(myPiecesBB, destination)) return;
+		
+		moves.addMove(move::from(origin, destination));
 
-		moves.addMove(Move(origin, destination));
-
-		if (isOne(enemyPiecesBB, destination)) return;
+		if (getBit(enemyPiecesBB, destination)) return;
 	}
 }
 
-void moveGenerator::generateMoves(const Board& board, MoveList moves) {
+void moveGenerator::generateMoves(const Board& board, MoveList& moves) {
 	const Piece* myPieces = board.whiteToMove ? board.whitePieces.data() : board.blackPieces.data();
 	const Piece* enemyPieces = board.whiteToMove ? board.blackPieces.data() : board.whitePieces.data();
 	Bitboard myPiecesBB = board.whiteToMove ? board.whitePieceBB : board.blackPieceBB;
@@ -34,7 +34,6 @@ void moveGenerator::generateMoves(const Board& board, MoveList moves) {
 		case Pawn:
 			break;
 		case Knight:
-
 			break;
 		case Bishop:
 			slide(moves, piece.square, NorthWest, myPiecesBB, enemyPiecesBB);
@@ -59,6 +58,9 @@ void moveGenerator::generateMoves(const Board& board, MoveList moves) {
 			slide(moves, piece.square, West, myPiecesBB, enemyPiecesBB);
 			break;
 		case King:
+			if (notRank1(piece.square)) {
+
+			}
 			break;
 		}
 	}

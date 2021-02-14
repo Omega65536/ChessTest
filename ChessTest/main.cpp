@@ -1,14 +1,13 @@
-#include <iostream>
 #include <chrono>
+#include <iostream>
 #include <vector>
 
 #include "board.h"
-#include "piece.h"
 #include "move.h"
-#include "square.h"
-#include "util.h"
 #include "moveGenerator.h"
 #include "moveList.h"
+#include "square.h"
+#include "piece.h"
 
 int main() {
 	Board board = Board();
@@ -24,11 +23,17 @@ int main() {
 
 	auto t2 = std::chrono::high_resolution_clock::now();
 
+	/*for (unsigned int i = 0; i < 64; i++) {
+		std::cout << notFileA(i) << std::endl;
+
+	}*/
+	
+
 	//for (Move move : moves) {
 	//	//std::cout << move.toString() << std::endl;
 	//}
 
 	std::cout << "Time in microseconds: " << std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count() << std::endl;
 
-	return 0;
+	system("pause");
 }

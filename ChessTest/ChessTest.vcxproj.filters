@@ -27,9 +27,6 @@
     <ClCompile Include="board.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="moveGenerator.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="bitboard.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="util.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="moveGenerator.h">

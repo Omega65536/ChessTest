@@ -1,5 +1,7 @@
 #pragma once
 
+#define getBit(bb, i) (bb >> i) & 1LL
+
 typedef uint64_t Bitboard;
 
 const int debruijnIndices[] = {
@@ -17,8 +19,4 @@ const Bitboard debruijn64 = 0x03f79d71b4cb0a89;
 
 inline Square getLSB(const Bitboard bb) {
 	return debruijnIndices[((bb ^ (bb - 1)) * debruijn64) >> 58];
-}
-
-inline bool isOne(const Bitboard bb, const Square i) {
-	return (bb >> i) & 1LL;
 }

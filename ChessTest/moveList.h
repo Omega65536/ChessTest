@@ -10,7 +10,7 @@ struct MoveList {
 		numMoves = 0;
 	}
 
-	inline void addMove(Move move) {
+	inline void addMove(const Move& move) {
 		moves[numMoves] = move;
 		numMoves++;
 	}

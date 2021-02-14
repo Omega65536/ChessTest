@@ -144,7 +144,6 @@
     <ClCompile Include="moveGenerator.cpp" />
     <ClCompile Include="piece.cpp" />
     <ClCompile Include="move.cpp" />
-    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitboard.h" />
@@ -155,7 +154,6 @@
     <ClInclude Include="square.h" />
     <ClInclude Include="piece.h" />
     <ClInclude Include="move.h" />
-    <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
