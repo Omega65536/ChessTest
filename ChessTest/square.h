@@ -25,14 +25,15 @@ const std::string rankStrings[]{
 	"1", "2", "3", "4", "5", "6", "7", "8"
 };
 
-const Direction NORTHWEST = 7;
-const Direction NORTH = 8;
-const Direction NORTHEAST = 9;
-const Direction EAST = 1;
-const Direction SOUTHEAST = -7;
-const Direction SOUTH = -8;
-const Direction SOUTHWEST = -9;
-const Direction WEST = -1;
+const Direction NorthWest = 7;
+const Direction North = 8;
+const Direction NorthEast = 9;
+const Direction East = 1;
+const Direction SouthEast = -7;
+const Direction South = -8;
+const Direction SouthWest = -9;
+const Direction West = -1;
+const Direction KnightNorthWest = 15;
 
 inline bool isOnEdge(const Square square) {
 	return ((square & 7) == 0) || ((square & 7) == 7) ||
@@ -49,21 +50,21 @@ inline Square getY(const Square square) {
 
 inline Square getDistToEdge(const Square square, const Direction direction) {
 	switch (direction) {
-	case NORTHWEST:
+	case NorthWest:
 		return std::min(getX(square), 7 - getY(square));
-	case NORTH:
+	case North:
 		return 7 - getY(square);
-	case NORTHEAST:
+	case NorthEast:
 		return std::min(7 - getX(square), 7 - getY(square));
-	case EAST:
+	case East:
 		return 7 - getX(square);
-	case SOUTHEAST:
+	case SouthEast:
 		return std::min(7 - getX(square), getY(square));
-	case SOUTH:
+	case South:
 		return getY(square);
-	case SOUTHWEST:
+	case SouthWest:
 		return std::min(getX(square), getY(square));
-	case WEST:
+	case West:
 		return getX(square);
 	default:
 		return 0;

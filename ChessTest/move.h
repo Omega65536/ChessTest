@@ -8,5 +8,6 @@ struct Move {
 	Square destination;
 
 	Move(const Square o, const Square d);
+	Move();
 	std::string toString();
 };
