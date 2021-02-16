@@ -23,6 +23,6 @@ namespace move {
 	}
 
 	inline std::string toString(Move move) {
-		return square::toString(getOrigin(move)) + square::toString(getOrigin(move));
+		return square::toString(getOrigin(move)) + square::toString(getDestination(move));
 	}
 }

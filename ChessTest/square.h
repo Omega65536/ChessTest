@@ -34,7 +34,15 @@ const Direction SouthEast = -7;
 const Direction South = -8;
 const Direction SouthWest = -9;
 const Direction West = -1;
+
 const Direction KnightNorthWest = 15;
+const Direction KnightNorthEast = 17;
+const Direction KnigthEastNorth = 10;
+const Direction KnightEastSouth = -6;
+const Direction KnightSouthEast = -15;
+const Direction KinghtSouthWest = -17;
+const Direction KnightWestSouth = -10;
+const Direction KnigthWestNorth = 6;
 
 namespace square {
 	const std::string fileStrings[]{

@@ -58,9 +58,14 @@ void moveGenerator::generateMoves(const Board& board, MoveList& moves) {
 			slide(moves, piece.square, West, myPiecesBB, enemyPiecesBB);
 			break;
 		case King:
-			if (notRank1(piece.square)) {
-
-			}
+			if (notFileA(piece.square) && notRank8(piece.square)) moves.addMove(move::from(piece.square, piece.square + NorthWest));
+			if (notRank8(piece.square)) moves.addMove(move::from(piece.square, piece.square + North));
+			if (notFileH(piece.square) && notRank8(piece.square)) moves.addMove(move::from(piece.square, piece.square + NorthEast));
+			if (notFileH(piece.square)) moves.addMove(move::from(piece.square, piece.square + East));
+			if (notFileH(piece.square) && notRank1(piece.square)) moves.addMove(move::from(piece.square, piece.square + SouthEast));
+			if (notRank1(piece.square)) moves.addMove(move::from(piece.square, piece.square + South));
+			if (notFileA(piece.square) && notRank1(piece.square)) moves.addMove(move::from(piece.square, piece.square + SouthWest));
+			if (notFileA(piece.square)) moves.addMove(move::from(piece.square, piece.square + West));
 			break;
 		}
 	}

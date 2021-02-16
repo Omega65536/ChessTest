@@ -16,7 +16,7 @@ int main() {
 	auto t1 = std::chrono::high_resolution_clock::now();
 
 	MoveList moveList;
-	for (int i = 0; i < 1000'000; i++) {
+	for (int i = 0; i < 1'000'000; i++) {
 		moveList.clear();
 		moveGenerator::generateMoves(board, moveList);
 	}
@@ -29,9 +29,9 @@ int main() {
 	}*/
 	
 
-	//for (Move move : moves) {
-	//	//std::cout << move.toString() << std::endl;
-	//}
+	/*for (Move move : moveList.moves) {
+		std::cout << move::toString(move) << std::endl;
+	}*/
 
 	std::cout << "Time in microseconds: " << std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count() << std::endl;
 
